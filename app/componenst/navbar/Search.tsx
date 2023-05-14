@@ -6,6 +6,7 @@ const Search = () => {
   return (
     <div
       className="
+           backdrop-blur-3xl
            select-none
            border-[1px]
            w-full

@@ -55,6 +55,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         <div
           onClick={toggleOpen}
           className="
+        backdrop-blur-3xl
         p-4
         md:py-1
         md:px-2
