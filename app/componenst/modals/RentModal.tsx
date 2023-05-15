@@ -46,7 +46,7 @@ const RentModal = () => {
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
-      imageSrc: '',
+      imageSrc: '/images/housePlaceholder.jpg',
       price: 1,
       title: '',
       description: '',
@@ -90,7 +90,7 @@ const RentModal = () => {
       .then(() => {
         toast.success('Listing Created!')
         router.refresh()
-        reset
+        reset()
         setStep(STEPS.CATEGORY)
         rentModal.onClose()
       })
