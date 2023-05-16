@@ -18,7 +18,7 @@ const ReservationsPage = async () => {
     return (
       <EmptyState
         title="No reservations found"
-        subtitle="Looks like your no reservations on your properties"
+        subtitle="Looks like your no reservations on your properties."
       />
     )
   }
