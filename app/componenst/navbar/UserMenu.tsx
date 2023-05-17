@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState, useRef } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
@@ -23,6 +23,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const rentModal = useRentModal()
 
   const [isOpen, setIsOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value)
@@ -34,6 +35,20 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     }
     rentModal.onOpen()
   }, [currentUser, loginModal])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside, true)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true)
+    }
+  }, [])
 
   return (
     <div className="relative select-none">
@@ -82,6 +97,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       </div>
       {isOpen && (
         <div
+          ref={menuRef}
           className="
         absolute
         rounded-xl

@@ -7,6 +7,7 @@ import Navbar from './componenst/navbar/Navbar'
 import getCurrentUser from './actions/getCurrentUser'
 import RentModal from './componenst/modals/RentModal'
 import ClientOnly from './componenst/ClientOnly'
+import SearchModal from './componenst/modals/SearchModal'
 
 const inter = Nunito({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         {/* <ClientOnly> */}
         <ToasterProvider />
+        <SearchModal />
         <RentModal />
         <LoginModal />
         <RegisterModal />
